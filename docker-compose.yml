@@ -1,0 +1,16 @@
+version: '3.8' # Choose a version compatible with your Docker setup
+
+services:
+  springboot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9080:9080" # Maps container's port 8080 to your host's port 8080
+    volumes:
+      - ./logs:/app/logs # Mount logs directory (if needed)
+    restart: always # Restart policy: always, unless-stopped, or on-failure
+
+volumes:
+  app-logs:
+    driver: local
